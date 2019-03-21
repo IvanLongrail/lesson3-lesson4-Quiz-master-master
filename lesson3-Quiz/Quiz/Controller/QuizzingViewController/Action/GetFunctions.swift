@@ -16,9 +16,10 @@ extension QuizzingVC {
     
     func getLuck(from currentQuestionLucky: Question.LuckyProperty) -> Player.PlayerLuck {
         let luck: Player.PlayerLuck!
+       
         switch currentQuestionLucky {
         case .none:
-            luck = Player.PlayerLuck(isActive: false, value: currentQuestionLucky.rawValue )
+            luck = Player.PlayerLuck(isActive: false, value: currentQuestionLucky.rawValue)//luck.value )
         case .coeffitient:
             luck = Player.PlayerLuck(isActive: true, value: currentQuestionLucky.rawValue )
         }

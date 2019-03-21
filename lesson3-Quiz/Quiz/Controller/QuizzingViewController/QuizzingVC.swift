@@ -107,9 +107,6 @@ class QuizzingVC: UIViewController {
             countdownProgressView.setProgress(Float(timerCount.current / timerCount.total), animated: true)
             
             if currentQuestion.luckyProperty != .none {
-                let c = timerCount.current
-                let t = timerCount.total
-                let s = startLucky!
                 let luckyDuration: Double = 2 // seconds
                 if timerCount.current > startLucky!, timerCount.current < (startLucky! + luckyDuration) {
                     countdownLabel.text = "LUCKY TIME!"

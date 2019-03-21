@@ -8,7 +8,7 @@
 
 import UIKit
 
-extension QuizSelectionVC: UITableViewDelegate, UITableViewDataSource {
+extension QuizSelectionVC: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "QuizTableViewCell", for: indexPath) as! QuizTableViewCell
