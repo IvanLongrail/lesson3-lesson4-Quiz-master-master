@@ -37,10 +37,14 @@ class QuizzingVC: UIViewController {
     
     var timerCount: (current: Double,total: Double) = (0,1)
     var timer: Timer?
+    var startLucky: Double?
+    var viewBackgroundColor: UIColor!
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        viewBackgroundColor = view.backgroundColor
         updateUI()
     }
     
@@ -64,6 +68,7 @@ class QuizzingVC: UIViewController {
         
             countdownProgressView.setProgress(1, animated: false)
         
+            startLucky = Double.random(in: 0 ... timerCount.total) //* 2 )
             timer = Timer.scheduledTimer(timeInterval: 0.1, target: self, selector: #selector(changeCountdown(timer:)), userInfo: nil, repeats: true)
         }
         
@@ -94,10 +99,26 @@ class QuizzingVC: UIViewController {
     }
     
     @objc func changeCountdown(timer: Timer) {
+        let currentQuestion = quiz.questions[indexOfCurrentQuestion]
+        
         if timerCount.current > 0 {
             timerCount.current -= 0.1
             countdownLabel.text = String(Int(timerCount.current))
             countdownProgressView.setProgress(Float(timerCount.current / timerCount.total), animated: true)
+            
+            if currentQuestion.luckyProperty != .none {
+                let c = timerCount.current
+                let t = timerCount.total
+                let s = startLucky!
+                let luckyDuration: Double = 2 // seconds
+                if timerCount.current > startLucky!, timerCount.current < (startLucky! + luckyDuration) {
+                    countdownLabel.text = "LUCKY TIME!"
+                    view.backgroundColor = UIColor.black
+                } else {
+                    view.backgroundColor = viewBackgroundColor
+                }
+            }
+            
         } else {
             timer.invalidate()
         }

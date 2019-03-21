@@ -19,7 +19,7 @@ extension QuizzingVC {
         switch currentQuestionLucky {
         case .none:
             luck = Player.PlayerLuck(isActive: false, value: currentQuestionLucky.rawValue )
-        case .luckyCoeffitient:
+        case .coeffitient:
             luck = Player.PlayerLuck(isActive: true, value: currentQuestionLucky.rawValue )
         }
         return luck

@@ -18,7 +18,7 @@ extension Question {
         questionArray.append(Question(text: "В каком году увидела свет первая пластинка группы The Beatles «Please, Please Me»?", responceProperty: .range, timerProperty: .fast, luckyProperty: .none, scoreProperty: ScoreProperty(best: 10, aboveAverage: 0, middle: 0, low: 0), answers: [("1959",.low),("1963",.best),("1976",.low)]))
         
         // 2-nd question
-        questionArray.append(Question(text: "На какую песню из дебютного альбома сняли первый клип для певицы Земфира, но он так и не увидел свет на российском телевидении?", responceProperty: .single, timerProperty: .fast, luckyProperty: .none, scoreProperty: .singleAnswer(withScore: 10), answers: [("Ромашки", .low),("Аривидерчи",.middle),("Спид",.best),("Почему",.aboveAverage)]))
+        questionArray.append(Question(text: "На какую песню из дебютного альбома сняли первый клип для певицы Земфира, но он так и не увидел свет на российском телевидении?", responceProperty: .single, timerProperty: .fast, luckyProperty: .none, scoreProperty: .singleAnswer(withScore: 10), answers: [("Ромашки", .low),("Аривидерчи",.middle),("СПИД",.best),("Почему",.aboveAverage)]))
         
         // 3-nd question
         questionArray.append(Question(text: "Что такое осень согласно тексту группы ДДТ?", responceProperty: .multipal, timerProperty: .double, luckyProperty: .none, scoreProperty: ScoreProperty(best: 3, aboveAverage: 3, middle: 3, low: -6),

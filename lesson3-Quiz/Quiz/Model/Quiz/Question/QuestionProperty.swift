@@ -22,7 +22,7 @@ extension Question {
     
     enum LuckyProperty: Double { //score coefficient
         case none = 1
-        case luckyCoeffitient = 2
+        case coeffitient = 2
     }
     
     enum ScoreEnum {
