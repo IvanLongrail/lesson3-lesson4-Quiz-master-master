@@ -36,7 +36,6 @@ extension QuizzingVC {
         let currentQuestion = quiz.questions[indexOfCurrentQuestion]
         guard currentQuestion.answers.count == 3 else { return }
         
-        //rengedSlider.value = 0.5
         let title1 = currentQuestion.answers[0].text
         rengedSlider.minimumValue = Float(title1)!
         rengedLabels[1].text = title1

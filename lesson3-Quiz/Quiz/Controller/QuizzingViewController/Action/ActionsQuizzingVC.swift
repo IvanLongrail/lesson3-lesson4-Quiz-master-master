@@ -36,9 +36,10 @@ extension QuizzingVC {
         let currentQuestionAnswers = currentQuizQuestion.answers
         let currentQuestionLucky = currentQuizQuestion.luckyProperty
         
-        let time = getTime(from: timerCount)
-        let luck = getLuck(from: currentQuestionLucky)
         let score = getScore(from: currentQuestionAnswers, sender: sender)
+        let time = getTime(from: timerCount)
+        let luck = getLuck(from: currentQuestionLucky, with: score)
+        
 
         let currentPlayerAnswerResult = Player.AnswerResult.init(time: time, luck: luck, score: score)
 

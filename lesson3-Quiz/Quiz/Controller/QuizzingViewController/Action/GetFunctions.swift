@@ -11,18 +11,19 @@ import UIKit
 extension QuizzingVC {
     
     func getTime(from timerCount: (Double,Double)) -> Player.PlayerTime {
-        return Player.PlayerTime.init(remains: timerCount.1, spent: timerCount.1 - timerCount.0)
+        return Player.PlayerTime.init(remains: timerCount.0, spent: timerCount.1 - timerCount.0)
     }
     
-    func getLuck(from currentQuestionLucky: Question.LuckyProperty) -> Player.PlayerLuck {
-        let luck: Player.PlayerLuck!
-       
-        switch currentQuestionLucky {
-        case .none:
-            luck = Player.PlayerLuck(isActive: false, value: currentQuestionLucky.rawValue)//luck.value )
-        case .coeffitient:
-            luck = Player.PlayerLuck(isActive: true, value: currentQuestionLucky.rawValue )
+    func getLuck(from currentQuestionLucky: Question.LuckyProperty, with currentScore: ScoreType) -> Player.PlayerLuck {
+        var luck: Player.PlayerLuck!
+        
+        luck = Player.PlayerLuck(isActive: false, value: Question.LuckyProperty.none.rawValue )
+        if flagSuccessLucky {
+            luck = Player.PlayerLuck(isActive: true, value: Question.LuckyProperty.coeffitient.rawValue )
+        } else {
+            luck = Player.PlayerLuck(isActive: true, value: Question.LuckyProperty.none.rawValue )
         }
+        
         return luck
     }
     

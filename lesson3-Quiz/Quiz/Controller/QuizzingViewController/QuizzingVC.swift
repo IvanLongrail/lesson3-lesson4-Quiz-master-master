@@ -38,6 +38,7 @@ class QuizzingVC: UIViewController {
     var timerCount: (current: Double,total: Double) = (0,1)
     var timer: Timer?
     var startLucky: Double?
+    var flagSuccessLucky = false
     var viewBackgroundColor: UIColor!
 
     
@@ -54,6 +55,7 @@ class QuizzingVC: UIViewController {
         multipleStackView.isHidden = true
         countdownLabel.isHidden = true
         countdownProgressView.isHidden = true
+        view.backgroundColor = viewBackgroundColor
     
         navigationItem.title = quiz.quizName
         
@@ -68,7 +70,7 @@ class QuizzingVC: UIViewController {
         
             countdownProgressView.setProgress(1, animated: false)
         
-            startLucky = Double.random(in: 0 ... timerCount.total) //* 2 )
+            startLucky = Double.random(in: 0 ... timerCount.total * 2 )
             timer = Timer.scheduledTimer(timeInterval: 0.1, target: self, selector: #selector(changeCountdown(timer:)), userInfo: nil, repeats: true)
         }
         
@@ -101,7 +103,7 @@ class QuizzingVC: UIViewController {
     @objc func changeCountdown(timer: Timer) {
         let currentQuestion = quiz.questions[indexOfCurrentQuestion]
         
-        if timerCount.current > 0 {
+        if timerCount.current > 0.1 {
             timerCount.current -= 0.1
             countdownLabel.text = String(Int(timerCount.current))
             countdownProgressView.setProgress(Float(timerCount.current / timerCount.total), animated: true)
@@ -111,12 +113,15 @@ class QuizzingVC: UIViewController {
                 if timerCount.current > startLucky!, timerCount.current < (startLucky! + luckyDuration) {
                     countdownLabel.text = "LUCKY TIME!"
                     view.backgroundColor = UIColor.black
+                    flagSuccessLucky = true
                 } else {
                     view.backgroundColor = viewBackgroundColor
+                    flagSuccessLucky = false
                 }
             }
             
         } else {
+            timerCount.current = 0
             timer.invalidate()
         }
     }

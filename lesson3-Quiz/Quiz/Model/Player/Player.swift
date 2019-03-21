@@ -30,6 +30,7 @@ class Player {
         }
         
         var totalScore: Double {
+            
             return answers.reduce(0, {$0 + $1.score * $1.timeMultiplier * $1.luck.value})
         }
         
